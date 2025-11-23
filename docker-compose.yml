@@ -1,0 +1,15 @@
+version: '3.8'
+
+services:
+  app:
+    # Tu musi być Twój obraz z Docker Hub!
+    image: aserand/express-app:latest
+    ports:
+      - "3000:3000"
+
+  watchtower:
+    image: containrrr/watchtower
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    # Sprawdzaj aktualizacje co 30 sekund (zamiast co 24h)
+    command: --interval 30
